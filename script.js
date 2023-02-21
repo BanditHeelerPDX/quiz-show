@@ -52,22 +52,22 @@ const quizQuestions = [ {
     });
   };*/
 function showQuestion() {
-    const currentQuestionObj = quizQuestions[currentQuestion];
+    
     
     const question = document.getElementById("question");
-    question.textContent = currentQuestionObj.question;
+    question.textContent = question.question;
 
     const choicesBox = document.getElementById("choices");
     choicesBox.innerHTML = "";
 
-    for (var i = 0; i < currentQuestionObj.choices.length; ++i) {
+    for (var i = 0; i < question.choices.length; ++i) {
         const choiceLabel = document.createElement("label");
-        choiceLabel.textContent = currentQuestionObj.choices[i];
+        choiceLabel.textContent = question.choices[i];
 
         const choiceInput = document.createElement("input");
-        choiceInput.type = "radio";
+        choiceInput.type = "submit";
         choiceInput.name = "answer-choice";
-        choiceInput.value = currentQuestionObj.choices[i];
+        choiceInput.value = question.choices[i];
         choiceInput.required = false;
 
         choiceLabel.appendChild(choiceInput);
@@ -77,16 +77,16 @@ function showQuestion() {
       const scoreText = document.getElementById("score-text");
       scoreText.textContent = score;
     
-      document.querySelector("input").addEventListener("submit", handleAnswer);
+      document.querySelector("answer-choice").addEventListener("radio", handleAnswer);
   };
 
   // Insert function to handle answers
   function handleAnswer() {
-    const currentQuestionObj = quizQuestions[currentQuestion];
+    const question = quizQuestions[currentQuestion];
     const selectedAnswer = document.querySelector('input[name="answer-choice"]:checked');
     if (selectedAnswer) {
       const answer = selectedAnswer.value;
-        if (answer === currentQuestionObj.answer) {
+        if (answer === question.answer) {
         score++;
       } else {
         gameClock -= 2;
