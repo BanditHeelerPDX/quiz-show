@@ -6,7 +6,7 @@ let gameClockInterval;
 
 // Questions for the quiz - or the quizQuestion array, if you will
 const quizQuestions = [  {    
-    question: "Which of the following will not properly create an array?",    
+    question: "Which of the following will properly create an array?",    
     choices: ["let oldArray = new Array[16]", "var myarray = ['Dwayne', 16, 32, 48]", "let yourarray = myarray()", "var thearray = vacuums('hoover', 'dyson', 'magnavox')"],
     answer: "let oldArray = new Array[16]"
   },
@@ -39,6 +39,7 @@ const quizQuestions = [  {
 ];
 
 // Insert function to display question and answers
+
 function showQuestion() {
     const currentQuestionObj = quizQuestions[currentQuestion];
     
@@ -53,7 +54,7 @@ function showQuestion() {
         choiceLabel.textContent = currentQuestionObj.choices[i];
 
         const choiceInput = document.createElement("input");
-        choiceInput.type = "radio";
+        choiceInput.type = "submit";
         choiceInput.name = "answer-choice";
         choiceInput.value = currentQuestionObj.choices[i];
         choiceInput.required = true;
@@ -62,13 +63,11 @@ function showQuestion() {
         choicesBox.appendChild(choiceLabel);
       };
       
-      const questionNumber = document.getElementById("question-number");
-      questionNumber.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
-    
+   
       const scoreText = document.getElementById("score-text");
       score.textContent = score;
       
-  };
+  }
 
   // Insert function to handle answers
   function handleAnswer(answer) {
@@ -102,8 +101,8 @@ function showQuestion() {
       location.reload();
     });
   
-    gameContainer.appendChild(resultText);
-    gameContainer.appendChild(restartButton);
+    gameBox.appendChild(resultText);
+    gameBox.appendChild(restartButton);
   };
 
   // Insert function to update game clock
@@ -125,3 +124,6 @@ function showQuestion() {
     setInterval(shotClock, 1000); 
     showQuestion(); 
   });
+
+
+
