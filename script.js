@@ -108,7 +108,15 @@ function showQuestion() {
   // Insert function to update game clock
   function shotClock() {
     gameClock--;
- 
+    const progressBar = document.getElementById("progress-bar");
+    const progressWidth = (gameClock / 60) * 100;
+    progressBar.style.width = `${progressWidth}%`;
+    progressBar.textContent = gameClock;
+    if (gameClock <= 0) {
+      endGame();
+    }
+  }
+  
 
 
   // Insert event listener for start button
