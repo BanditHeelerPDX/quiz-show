@@ -8,7 +8,33 @@
 </head>
 
 <body>
-  
+    <h1>JavaScript Quiz Show</h1>
+    <p>Do you have what it takes to answer a few simple questions about Javascript?</p>
+    <div id="quiz-box">
+      <div id="question-box">
+        <h2 id="question"></h2>
+        <ul id="choices">
+          <li><button id="choice-0"></button></li>
+          <li><button id="choice-1"></button></li>
+          <li><button id="choice-2"></button></li>
+          <li><button id="choice-3"></button></li>
+        </ul>
+      </div>
+      <div id="progress-bar-box">
+        <div id="progress-bar"></div>
+      </div>
+    </div>
+    <div id="score-box">
+      <p>Score: <span id="score"></span></p>
+    </div>
+    <div id="game-over-box">
+      <h2>Game Over!</h2>
+      <p>Your score was <span id="final-score"></span>.</p>
+      <p>Enter your initials to share your pain:</p>
+      <input type="text" id="initials-input">
+      <button id="submit-score-button">Submit</button>
+    </div>
+    <button id="start-button">Start Game</button>
  
   <script src="script.js"></script>
 

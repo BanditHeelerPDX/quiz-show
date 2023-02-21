@@ -41,6 +41,32 @@ const quizQuestions = [  {
 function showQuestion() {
     const currentQuestionObj = quizQuestions[currentQuestion];
     
+    const questionText = document.getElementById("question-text");
+    questionText.textContent = currentQuestionObj.question;
+
+    const choicesBox = document.getElementById("choices-box");
+    choicesBox.innerHTML = "";
+
+    for (let i = 0; i < currentQuestionObj.choices.length; i++) {
+        const choiceLabel = document.createElement("label");
+        choiceLabel.textContent = currentQuestionObj.choices[i];
+
+        const choiceInput = document.createElement("input");
+        choiceInput.type = "radio";
+        choiceInput.name = "answer-choice";
+        choiceInput.value = currentQuestionObj.choices[i];
+        choiceInput.required = true;
+
+        choiceLabel.appendChild(choiceInput);
+        choicesBox.appendChild(choiceLabel);
+      };
+      
+      const questionNumber = document.getElementById("question-number");
+      questionNumber.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
+    
+      const scoreText = document.getElementById("score-text");
+      scoreText.textContent = `Score: ${score}`;
+      
   };
 
   // Insert function to handle answers
