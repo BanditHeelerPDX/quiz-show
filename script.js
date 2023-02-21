@@ -1,3 +1,7 @@
+// Global variables
+let currentQuestion = 0;
+let score = 0;
+let gameClock = 60;
 
 // Questions for the quiz - or the quizQuestion array, if you will
 const quizQuestions = [  {    
@@ -32,3 +36,46 @@ const quizQuestions = [  {
   },
   // Add additional questions as required...
 ];
+
+// Insert function to display question and answers
+function showQuestion() {
+    const currentQuestionObj = quizQuestions[currentQuestion];
+    
+  };
+
+  // Insert function to handle answers
+  function handleAnswer(answer) {
+    const currentQuestionObj = quizQuestions[currentQuestion];
+    if (answer === currentQuestionObj.answer) {
+      score++;
+    } else {
+      gameClock -= 2;
+    }
+    currentQuestion++;
+    if (currentQuestion >= quizQuestions.length) {
+      endGame();
+    } else {
+      showQuestion();
+    }
+  };
+  
+  // Insert function to end the game and display the leaderboard
+  function endGame() {
+    // Display the leaderboard and allow the user to save their initials
+  };
+
+  // Insert function to update game clock
+  function shotClock() {
+    gameClock--;
+    if (gameClock <= 0) {
+      endGame();
+    } else {
+     
+    }
+  };
+
+  // Insert event listener for start button
+  document.getElementById("start-button").addEventListener("click", function() {
+    setInterval(shotClock, 1000); 
+    showQuestion(); 
+  });
