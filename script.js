@@ -87,18 +87,29 @@ function showQuestion() {
   
   // Insert function to end the game and display the leaderboard
   function endGame() {
-    // Display the leaderboard and allow the user to save their initials
+    clearInterval(gameClockInterval);
+
+    const gameContainer = document.getElementById("game-container");
+    gameContainer.innerHTML = "";
+  
+    const resultText = document.createElement("h2");
+    resultText.textContent = `Game over! Your final score is ${score}.`;
+  
+    const restartButton = document.createElement("button");
+    restartButton.textContent = "Restart Game";
+    restartButton.addEventListener("click", function() {
+      location.reload();
+    });
+  
+    gameContainer.appendChild(resultText);
+    gameContainer.appendChild(restartButton);
   };
 
   // Insert function to update game clock
   function shotClock() {
     gameClock--;
-    if (gameClock <= 0) {
-      endGame();
-    } else {
-     
-    }
-  };
+ 
+
 
   // Insert event listener for start button
   document.getElementById("start-button").addEventListener("click", function() {
