@@ -2,6 +2,7 @@
 let currentQuestion = 0;
 let score = 0;
 let gameClock = 60;
+let gameClockInterval;
 
 // Questions for the quiz - or the quizQuestion array, if you will
 const quizQuestions = [  {    
@@ -41,10 +42,10 @@ const quizQuestions = [  {
 function showQuestion() {
     const currentQuestionObj = quizQuestions[currentQuestion];
     
-    const questionText = document.getElementById("question-text");
-    questionText.textContent = currentQuestionObj.question;
+    const question = document.getElementById("question");
+    question.textContent = currentQuestionObj.question;
 
-    const choicesBox = document.getElementById("choices-box");
+    const choicesBox = document.getElementById("choices");
     choicesBox.innerHTML = "";
 
     for (let i = 0; i < currentQuestionObj.choices.length; i++) {
@@ -65,7 +66,7 @@ function showQuestion() {
       questionNumber.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length}`;
     
       const scoreText = document.getElementById("score-text");
-      scoreText.textContent = `Score: ${score}`;
+      score.textContent = score;
       
   };
 
@@ -89,8 +90,8 @@ function showQuestion() {
   function endGame() {
     clearInterval(gameClockInterval);
 
-    const gameContainer = document.getElementById("game-container");
-    gameContainer.innerHTML = "";
+    const gameBox = document.getElementById("quiz-box");
+    gameBox.innerHTML = "";
   
     const resultText = document.createElement("h2");
     resultText.textContent = `Game over! Your final score is ${score}.`;
