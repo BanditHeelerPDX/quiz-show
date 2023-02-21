@@ -8,7 +8,7 @@ let gameClockInterval;
 // Questions for the quiz - or the quizQuestion array, if you will
 const quizQuestions = [ {    
     question: "Which of the following will properly create an array?",    
-    choices: ["let oldArray = new Array[16]", "var myarray = ['Dwayne', 16, 32, 48]", "let yourarray = myarray()", "var thearray = vacuums('hoover', 'dyson', 'magnavox')"],
+    choices: ["let oldArray = newArray[16]", "var myarray = ['Dwayne', 16, 32, 48]", "let yourarray = myarray()", "var thearray = vacuums('hoover', 'dyson', 'magnavox')"],
     answer: "let oldArray = new Array[16]"
   },
   {
@@ -53,7 +53,7 @@ const quizQuestions = [ {
   };*/
 function showQuestion() {
     
-    
+    const question = quizQuestions[currentQuestion];
     const question = document.getElementById("question");
     question.textContent = question.question;
 
