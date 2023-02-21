@@ -4,6 +4,7 @@ let score = 0;
 let gameClock = 60;
 let gameClockInterval;
 
+
 // Questions for the quiz - or the quizQuestion array, if you will
 const quizQuestions = [ {    
     question: "Which of the following will properly create an array?",    
@@ -39,7 +40,17 @@ const quizQuestions = [ {
 ];
 
 // Insert function to display question and answers
-
+/*function displayQuestion(question) {
+    console.log(question.question);
+    question.options.forEach((option, index) => {
+      const button = document.createElement("button");
+      button.innerHTML = `${index + 1}. ${option}`;
+      button.addEventListener("click", () => {
+        handleAnswer(index, question.answer);
+      });
+      document.body.appendChild(button);
+    });
+  };*/
 function showQuestion() {
     const currentQuestionObj = quizQuestions[currentQuestion];
     
@@ -54,35 +65,39 @@ function showQuestion() {
         choiceLabel.textContent = currentQuestionObj.choices[i];
 
         const choiceInput = document.createElement("input");
-        choiceInput.type = "submit";
+        choiceInput.type = "radio";
         choiceInput.name = "answer-choice";
         choiceInput.value = currentQuestionObj.choices[i];
-        choiceInput.required = true;
+        choiceInput.required = false;
 
         choiceLabel.appendChild(choiceInput);
         choicesBox.appendChild(choiceLabel);
       };
       
-   
       const scoreText = document.getElementById("score-text");
-      score.textContent = score;
-      
-  }
+      scoreText.textContent = score;
+    
+      document.querySelector("input").addEventListener("submit", handleAnswer);
+  };
 
   // Insert function to handle answers
-  function handleAnswer(answer) {
+  function handleAnswer() {
     const currentQuestionObj = quizQuestions[currentQuestion];
-    if (answer === currentQuestionObj.answer) {
-      score++;
-    } else {
-      gameClock -= 2;
-    }
-    currentQuestion++;
-    if (currentQuestion >= quizQuestions.length) {
-      endGame();
-    } else {
+    const selectedAnswer = document.querySelector('input[name="answer-choice"]:checked');
+    if (selectedAnswer) {
+      const answer = selectedAnswer.value;
+        if (answer === currentQuestionObj.answer) {
+        score++;
+      } else {
+        gameClock -= 2;
+      }
+      currentQuestion++;
+      if (currentQuestion >= quizQuestions.length) {
+        endGame();
+      } else {
       showQuestion();
     }
+   }
   };
   
   // Insert function to end the game and display the leaderboard
@@ -126,6 +141,4 @@ function showQuestion() {
   });
 
 
-  document.getElementById("answer-choice").addEventListener("onchange", function () {
-    handleAnswer();
-});
+  
