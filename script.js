@@ -5,7 +5,7 @@ let gameClock = 60;
 let gameClockInterval;
 
 // Questions for the quiz - or the quizQuestion array, if you will
-const quizQuestions = [  {    
+const quizQuestions = [ {    
     question: "Which of the following will properly create an array?",    
     choices: ["let oldArray = new Array[16]", "var myarray = ['Dwayne', 16, 32, 48]", "let yourarray = myarray()", "var thearray = vacuums('hoover', 'dyson', 'magnavox')"],
     answer: "let oldArray = new Array[16]"
@@ -34,7 +34,7 @@ const quizQuestions = [  {
     question: "Window: message event",
     choices: ["This event bubbles, but cannot be cancelled.", "This event can be cancelled but does not bubble.", "This event bubbles and can be cancelled.", "This event is not cancellable and does not bubble."],
     answer: "This event is not cancellable and does not bubble."
-  },
+  }
   // Add additional questions as required...
 ];
 
@@ -49,7 +49,7 @@ function showQuestion() {
     const choicesBox = document.getElementById("choices");
     choicesBox.innerHTML = "";
 
-    for (let i = 0; i < currentQuestionObj.choices.length; i++) {
+    for (var i = 0; i < currentQuestionObj.choices.length; ++i) {
         const choiceLabel = document.createElement("label");
         choiceLabel.textContent = currentQuestionObj.choices[i];
 
@@ -114,8 +114,8 @@ function showQuestion() {
     progressBar.textContent = gameClock;
     if (gameClock <= 0) {
       endGame();
-    }
-  }
+    };
+  };
   
 
 
@@ -126,4 +126,6 @@ function showQuestion() {
   });
 
 
-
+  document.getElementById("answer-choice").addEventListener("onchange", function () {
+    handleAnswer();
+});
